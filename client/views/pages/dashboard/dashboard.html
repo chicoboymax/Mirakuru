@@ -1,0 +1,61 @@
+<template name="dashboard">
+	{{> pageHeading title='Dashboard' }}
+{{#if projectToDelete}}
+	{{>delconfirm}}
+{{/if}}
+<div class="wrapper wrapper-content animated fadeInRight">
+
+	<div class="page-header">
+		<!-- We added css to make this input look cloaked -->
+		<p>
+			<input class="form-control" type="text" name="projectNameEnter" id="projectNameEnter" placeholder="Add A Project" value="">
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+		{{#each projects}}
+			{{>project}}
+		{{else}}
+				<h4>No Projects Found !</h4>
+		{{/each}}
+		<div>
+	</div>
+	</div>
+	</div>
+</div>
+</template>
+
+<template name="project">
+	<div class="col-lg-4">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<a href="/projects/{{_id}}" class="eachProject" value="{{_id}}">{{name}}</a>
+				<div class="ibox-tools">
+					{{#if isowner}}
+					<a class="close-link deleteConfirmation">
+						<i class="fa fa-times fa-lg"></i>
+					</a>
+					{{/if}}
+				</div>
+
+			</div>
+			<div class="ibox-content">
+				<div>
+					<div class="widget style1 navy-bg">
+							<div class="row vertical-align">
+									<div class="col-xs-3">
+											<i class="fa fa-user fa-3x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+											<h2 class="font-bold">{{prospectsCount}}</h2>
+									</div>
+							</div>
+					</div>
+					<small>
+						Created on {{formatdate dateentered}}
+					</small>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

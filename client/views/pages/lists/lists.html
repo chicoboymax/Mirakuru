@@ -1,0 +1,89 @@
+<template name="lists">
+	<div class="page-header">
+		<!-- We added css to make this input look cloaked -->
+		<p>
+			<input class="biginput" type="text" name="listNameEnter" id="listNameEnter" placeholder="Add A List" value="">
+		</p>
+	</div>
+	<div>
+		<div class="panel panel-primary ">
+			<div class="panel-heading"><h4>Lists in the {{name}} project</h4></div>
+			<div id="assignementList" class="table-responsive">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th class="row-actions"></th>
+							<th class="row-address">List Name</th>
+							<th>Assigned To</th>
+							<th>Assignment Date</th>
+							<th class="row-actions1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each list}}
+						<tr class="eachList" value="{{_id}}">
+							<td id="prospectListActions">
+								{{#if isOwner}}
+								{{#afModal title="Edit list" omitFields="" class="text-primary" collection="Lists" operation="update" doc=_id }}
+								<i class="fa fa-pencil-square-o" buttonContent="Edit list"></i>
+								{{/afModal}}
+								{{/if}}
+							</td>
+							<td>
+								<p id="listName" class="listNameEdit">
+									{{name}}
+								</p>
+							</td>
+							<td>
+								<p id="assignedTo">
+									{{>assigned}}
+								</p>
+							</td>
+							<td>
+								<p id="assignmentDate">
+									{{formatdate assignedAt}}
+								</p>
+							</td>
+							<td>
+								{{#if isOwner}}
+								{{#afModal title="Delete list" class="text-danger" collection="Lists" operation="remove" doc=_id}}
+								<i class="fa fa-trash-o dark-hover" buttonContent="Delete list"></i>
+								{{/afModal}}
+								{{/if}}
+							</td>
+						</tr>
+						{{else}}
+						<h4>No Lists Found !</h4>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div>
+		</div>
+	</div>
+</template>
+
+
+<template name="assigned">
+	<div>
+		{{#each assignedTo}}
+		<div>
+		{{username}}
+		{{#if isOwner}}
+		<i class="fa fa-minus-circle removeAssignment"></i>
+		{{/if}}
+		</div>
+		{{else}}
+		{{#if isOwner}}
+		<select  name="userToAssign" class="userToAssign">
+			<option selected disabled hidden value=''>Assign a member</option>
+			{{#each members}}
+			<option value="{{_id}}">{{username}}</option>
+			{{/each}}
+		</select>
+		<i class="fa fa-plus-circle assignUser"></i>
+		{{/if}}
+		{{/each}}
+	</div>
+</template>

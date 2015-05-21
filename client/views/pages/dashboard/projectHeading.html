@@ -1,0 +1,28 @@
+<template name="projectHeading">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      {{#if editing_projectname}}
+      <input style="width:150px;margin-left:20px;font-size:10pt;" type="text"
+      class="noborder form-control projectName" id="projectName"
+      placeholder="Name" value="{{name}}">
+      {{else}}
+      <span>
+        <a class="projectNameEdit" href="#"><h2>{{name}}</h2></a>
+      </span>
+      <ol class="breadcrumb">
+        <li>
+          <a href="{{pathFor 'home'}}">Home</a>
+        </li>
+        {{#if category}}
+        <li>
+          <a>{{category}}</a>
+        </li>
+        {{/if}}
+        <li class="active">
+          <strong>Project</strong>
+        </li>
+      </ol>
+      {{/if}}
+    </div>
+  </div>
+</template>

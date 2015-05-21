@@ -1,0 +1,37 @@
+<template name="autoformGoogleplaceBasic">
+  <div class='autoform-googleplace-basic-cont padding-tb'>
+    {{propertyAddress}}
+    <br />
+
+    {{#autoForm collection="PropertiesCollection" doc=property id="propertyAddressForm" type=afMethod meteormethod="savePropertyAddress"}}
+      {{> afQuickField type="googleplace" name="address" label=false placeholder="Enter the Property Address" opts=optsGoogleplace }}
+      <button type="submit" class="btn btn-primary">Go</button>
+    {{/autoForm}}
+
+    <div class='margin-tb'>
+      <div class='btn btn-danger btn-small autoform-googleplace-basic-delete'>Delete All</div>
+    </div>
+
+    {{#each properties}}
+      <div>
+        <a href='/af-googleplace-basic?propertyId={{_id}}'>{{address.fullAddress}}</a>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="afGooglePlace">
+  <div class='lm-autoform-google-place-input-cont'>
+    <input type="text" value="{{this.value.fullAddress}}" {{atts}} class='lm-autoform-google-place-input form-control' />
+    <div class='lm-autoform-google-place-predictions {{classes.predictions}}'>
+      {{>afGooglePlacePredictions }}
+    </div>
+  </div>
+  <div class='lm-autoform-google-place-attribution'></div>
+</template>
+
+<template name="afGooglePlacePredictions">
+  {{#each predictions}}
+    <div class='lm-autoform-google-place-prediction-item'>{{description}}</div>
+  {{/each}}
+</template>

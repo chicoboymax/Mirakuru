@@ -1,0 +1,51 @@
+<template name="navigation">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+
+            <!-- Close canvas menu used only on OffCanvas page -->
+            <!-- You can remove this tag if you dont use offCanvas menu -->
+            <a class="close-canvas-menu"><i class="fa fa-times"></i></a>
+            <!-- End offCanvas menu toggle -->
+
+            <ul class="nav" id="side-menu">
+
+                <li class="nav-header">
+
+                    <div class="dropdown profile-element">
+                      <div class="logoMain">
+                        <i class="fa fa-bullhorn fa-lg"></i> Mirakuru
+                      </div>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{niceName}}</strong>
+                             </span> <span class="text-muted text-xs block">user <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="{{pathFor 'profile'}}">Profile</a></li>
+                            <li><a href="{{pathFor 'account'}}">Account</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/sign-out">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                      <i class="fa fa-bullhorn fa-lg"></i> MI+
+                    </div>
+                </li>
+
+                <li class="{{isActiveRoute regex='dashboard'}} dashboardBtn">
+                    <a href="{{pathFor 'dashboard'}}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span> </a>
+                </li>
+                {{#if inProject}}
+                <li class="{{isActiveRoute regex='projectView'}}">
+                    <a href="{{pathFor 'projectView'}}"><i class="fa fa-folder-open"></i> <span class="nav-label">Project</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='masterlist'}}">
+                    <a href="{{pathFor 'masterlist'}}"><i class="fa fa-th-list"></i> <span class="nav-label">Masterlist</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='lists'}}">
+                    <a href="{{pathFor 'lists'}}"><i class="fa fa-list-alt"></i> <span class="nav-label">Lists</span> </a>
+                </li>
+                {{/if}}
+            </ul>
+
+        </div>
+    </nav>
+</template>

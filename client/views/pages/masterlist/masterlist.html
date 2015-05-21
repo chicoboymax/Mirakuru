@@ -1,0 +1,102 @@
+<template name="masterlist">
+  {{> pageHeading title='Masterlist' category='Project' }}
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="page-header">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProspectFormGoogle">
+        <i class="fa fa-user-plus"></i> Add Prospects
+      </button>
+  	</div>
+    <div class="row">
+  		<div class="col-lg-12">
+
+  <div class="ibox float-e-margins">
+      <div class="ibox-title">
+          <h5>List of prospects in the {{name}} project</h5>
+      </div>
+      <div class="ibox-content">
+          <div class="table-responsive"><br>
+            {{> tabular table=TabularTables.Prospects selector=selector class="table table-condensed table-hover"}}
+          </div>
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="modal inmodal" id="addProspectFormGoogle" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content animated fadeIn">
+              <div class="modal-header">
+
+                  <i class="fa fa-user-plus fa-2x"></i>
+                  <h4 class="modal-title">Add prospects</h4>
+              </div>
+              <div class="modal-body">
+                {{#autoForm collection="Prospects" id="addProspectFormGoogle" type="insert"}}
+                  <fieldset>
+                    {{> afQuickField name='contacts'}}
+                    {{> afQuickField name="address" type="googleplace" opts=optsGoogleplace}}
+                    {{> afQuickField name="address.unit"}}
+                  </fieldset>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                {{/autoForm}}
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</template>
+
+
+<template name="contacts">
+  <div class="table-responsive">
+  <table id="contactsT" class="table table-condensed">
+    <thead>
+      <tr>
+        <th class="contactsHeader row-name">Name</th>
+        <th class="contactsHeader row-phone">Phone</th>
+        <th class="contactsHeader">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each contacts}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{phone}}</td>
+        <td>{{notes}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</template>
+
+
+
+
+
+
+
+
+<template name="editProspect">
+  {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
+  <i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i>
+  {{/afModal}}
+</template>
+
+
+
+<template name="deleteProspect">
+  {{#if isOwner}}
+  {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
+  <i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
+  {{/afModal}}
+  {{/if}}
+</template>
+
+<template name="listN">
+  {{#with listName}}
+  {{name}}
+  {{/with}}
+</template>

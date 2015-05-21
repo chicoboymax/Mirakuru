@@ -1,0 +1,32 @@
+<template name="members">
+    <div class="ibox">
+      <div class="ibox-title">
+          <h5>Members of the {{name}} project</h5>
+      </div>
+    <div class="ibox-content">
+      {{#if isowner ..}}
+      {{>searchBox}}
+      {{/if}}
+      <table class="table table-hover table-striped">
+        {{#each members}}
+        <tr><td width="250px">{{username}}</td>
+          <td>{{#if isowner ..}} <i class="fa fa-minus-circle removeUser"></i>{{/if}}</td>
+        </tr>
+        {{/each}}
+      </table>
+
+    </div>
+  </div>
+</template>
+
+<template  name="searchBox">
+  {{> esInput  class="form-control" index="users" renderSuggestion=suggestion placeholder="Add a member..." }}
+
+  <hr/>
+  <ul name="userToInvite" >
+    {{#esEach index="users"}}
+    <li  class="userToInvite" value="{{_id}}">{{username}} <i class="fa fa-plus-circle inviteUser"></i></li>
+
+    {{/esEach}}
+  </ul>
+</template>
