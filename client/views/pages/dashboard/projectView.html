@@ -11,7 +11,7 @@
         <div class="ibox float-e-margins">
           <div class="ibox-title  text-right">
             <h5>My lists</h5>
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addProspectFormGoogle">
+            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#addProspectFormGoogle">
               <i class="fa fa-user-plus"></i> Add Prospects
             </button>
           </div>
@@ -19,7 +19,7 @@
             <div class="panel-body">
               <div class="panel-group" id="accordion">
                 {{#each myLists}}
-                <div class="panel panel-primary">
+                <div class="panel panel-info">
                   <div class="panel-heading">
                     <h5 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{_id}}">{{name}}</a>
@@ -33,7 +33,7 @@
                             <tr>
                               <th class="row-actions" data-sort-ignore="true"></th>
                               <th class="row-address">Address</th>
-                              <th data-hide="phone">Contacts</th>
+                              <th  class="contacts-table" data-hide="phone">Contacts</th>
                               <th class="row-actions1" data-sort-ignore="true"></th>
                             </tr>
                           </thead>
@@ -42,7 +42,7 @@
                             <tr>
                               <td id="row-actions">
                                 {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
-                                <i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i>
+                                <button class="btn btn-success btn-circle"><i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i></button>
                                 {{/afModal}}
                               </td>
                               {{#with address}}
@@ -58,12 +58,13 @@
                               {{/with}}
                               <td>
 
-                                <table class="table">
+                                <table class="table table-condensed">
                                     <thead>
                                       <tr>
-                                        <th data-hide="phone">Name</th>
-                                        <th data-hide="phone">Phone</th>
-                                        <th data-hide="phone">Notes</th>
+                                        <th class="row-name">Name</th>
+                                        <th class="row-phone">Phone</th>
+                                        <th>Email</th>
+                                        <th>Notes</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -71,6 +72,7 @@
                                     	<tr>
                                     		<td>{{name}}</td>
                                     		<td>{{phone}}</td>
+                                        <td>{{email}}</td>
                                     		<td>{{notes}}</td>
                                     	</tr>
                                     	{{/each}}
@@ -80,7 +82,7 @@
                               <td>
                                 {{#if isOwner}}
                                 {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
-                                <i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i>
+                                <button class="btn btn-danger btn-circle"><i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i></button>
                                 {{/afModal}}
                                 {{/if}}
                               </td>
