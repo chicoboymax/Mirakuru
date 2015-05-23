@@ -54,6 +54,7 @@ Router.map(function() {
     },
     data:function(){
       Session.set('active_project',this.params._id);
+      Session.set('in_project',Session.get('active_project'));
       return Projects.findOne({_id:this.params._id});
     },
     onAfterAction:function(){
@@ -75,6 +76,7 @@ Router.map(function() {
     },
     data:function(){
       Session.set('active_project',this.params._id);
+      Session.set('in_project',Session.get('active_project'));
       return Projects.findOne({_id:this.params._id});
     },
     onAfterAction: function() {
@@ -95,6 +97,7 @@ Router.map(function() {
     },
     data:function(){
       Session.set('active_project',this.params._id);
+      Session.set('in_project',Session.get('active_project'));
       return Projects.findOne({_id:this.params._id});
     },
     onAfterAction: function() {

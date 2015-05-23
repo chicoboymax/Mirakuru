@@ -57,12 +57,11 @@ Template.deleteProspect.helpers({
 
 
 
-Template.editProspect.events({
+Template.masterlist.events({
+  'click .homeLink' : function(){
+    Session.set('in_project', false);
+  }
 
 
-
-});
-
-Template.editProspect.helpers({
 
 });

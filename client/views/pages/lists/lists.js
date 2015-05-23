@@ -91,5 +91,9 @@ Template.lists.events({
       var project = Session.get('active_project');
       Meteor.call('saveList',list,project);
     }
+  },
+  'click .homeLink' : function(){
+    Session.set('in_project', false);
   }
+
 });

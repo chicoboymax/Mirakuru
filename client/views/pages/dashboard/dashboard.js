@@ -14,9 +14,6 @@ Template.dashboard.events({
   },
   'click .cancelDelete':function(){
     return Session.set('projectToDelete',null);
-  },
-  'click .eachProject':function(){
-    Session.set('in_project', true);
   }
 });
 Template.dashboard.helpers({
