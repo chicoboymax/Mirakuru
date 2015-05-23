@@ -13,7 +13,6 @@ Router.configure({
   }
 });
 
-
 Router.map(function() {
   this.route("home", {
     path: "/",
@@ -69,7 +68,6 @@ Router.map(function() {
     fastRender: true,
     loginRequired: 'entrySignIn',
     waitOn:function(){
-      //Meteor.subscribe('prospects',this.params._id);
       Meteor.subscribe('directory');
       Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');

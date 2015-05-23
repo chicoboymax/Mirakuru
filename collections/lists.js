@@ -1,5 +1,7 @@
 Lists = new Meteor.Collection("lists");
 
+
+
 Schemas.Lists = new SimpleSchema({
   name: {
     type: String,

@@ -8,7 +8,7 @@ Template.navigation.rendered = function(){
 Template.navigation.helpers({
 
     inProject:function () {
-     if(Session.get('active_project')) {
+     if(Session.get('in_project')) {
        return true;
      }
     }
@@ -18,7 +18,7 @@ Template.navigation.helpers({
 Template.navigation.events({
 
   'click .dashboardBtn' : function(){
-      Session.set('active_project', '');
+    Session.set('in_project', false);
   }
 
 

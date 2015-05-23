@@ -51,6 +51,7 @@ email@1.0.6
 facebook@1.2.0
 fastclick@1.0.3
 fortawesome:fontawesome@4.3.0
+francocatena:status@1.2.1
 geojson-utils@1.0.3
 google@1.1.5
 handlebars@1.0.3
@@ -127,6 +128,7 @@ spacebars@1.0.6
 spacebars-compiler@1.0.6
 spiderable@1.0.7
 srp@1.0.3
+tap:i18n@1.4.1
 templating@1.1.1
 tracker@1.0.7
 twbs:bootstrap@3.3.4

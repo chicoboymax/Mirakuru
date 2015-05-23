@@ -43,7 +43,12 @@ Template.lists.helpers({
   isOwner: function() {
       var project = Projects.findOne({_id:Session.get('active_project')});
       return Meteor.userId() === project.userId;
-    }
+  },
+  prospectsCount:function() {
+	Meteor.subscribe('prospects',Session.get('active_project'));
+	var prospects = Prospects.find({listId:this._id}).count();
+    return prospects;
+  }
 });
 
 Template.assigned.helpers({

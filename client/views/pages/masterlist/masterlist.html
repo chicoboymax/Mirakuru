@@ -98,7 +98,7 @@
 
 <template name="editProspect">
   {{#afModal title="Update prospect" omitFields="createdAt,updatedAt,owner" class="text-primary" collection="Prospects" operation="update" doc=_id}}
-  <button class="btn btn-success btn-circle"><i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i></button>
+  <button class="btn btn-success btn-xs"><i class="fa fa-pencil-square-o" buttonContent="Edit prospect"></i></button>
   {{/afModal}}
 </template>
 
@@ -107,7 +107,7 @@
 <template name="deleteProspect">
   {{#if isOwner}}
   {{#afModal title="Delete prospect" class="text-danger" collection="Prospects" operation="remove" doc=_id}}
-  <button class="btn btn-danger btn-circle"><i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i></button>
+  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o dark-hover" buttonContent="Delete prospect"></i></button>
   {{/afModal}}
   {{/if}}
 </template>
