@@ -54,14 +54,3 @@ Template.deleteProspect.helpers({
     return Meteor.userId() === project.userId;
   }
 });
-
-
-
-Template.masterlist.events({
-  'click .homeLink' : function(){
-    Session.set('in_project', false);
-  }
-
-
-
-});

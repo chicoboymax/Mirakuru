@@ -20,9 +20,5 @@ Template.projectHeading.events({
       Meteor.call('updateProjectName', this._id, ele.value);
       Session.set('editing_projectname', false);
     }
-  },
-  'click .homeLink' : function(){
-    Session.set('in_project', false);
   }
-
 });

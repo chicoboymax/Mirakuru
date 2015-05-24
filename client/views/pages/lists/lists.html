@@ -30,15 +30,15 @@
 					</div>
 					<div class="ibox-content">
 						<div id="assignementList" class="table-responsive">
-							{{#footable}}
+							{{#footable class="table table-condensed table-hover"}}
 								<thead>
 									<tr>
-										<th class="row-actions" data-sort-ignore="true"></th>
+										<th data-hide="phone" class="row-actions" data-sort-ignore="true"></th>
 										<th data-hide="phone">Prospects in list</th>
 										<th>List Name</th>
 										<th>Assigned To</th>
 										<th data-hide="phone">Assignment Date</th>
-										<th class="row-actions1" data-sort-ignore="true"></th>
+										<th data-hide="phone" class="row-actions1" data-sort-ignore="true"></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -53,7 +53,7 @@
 										</td>
 										<td>
 											<div class="badge badge-warning">
-												{{prospectsCount}}
+												<i class="fa fa-user fa-lg"> {{prospectsCount}}</i>
 											</div>
 										</td>
 										<td>

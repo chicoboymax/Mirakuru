@@ -52,6 +52,9 @@ Router.map(function() {
       Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');
     },
+    unload:function(){
+      Session.set('in_project',null);
+    },
     data:function(){
       Session.set('active_project',this.params._id);
       Session.set('in_project',Session.get('active_project'));
@@ -73,6 +76,9 @@ Router.map(function() {
       Meteor.subscribe('lists',this.params._id);
       return Meteor.subscribe('projects');
 
+    },
+    unload:function(){
+      Session.set('in_project',null);
     },
     data:function(){
       Session.set('active_project',this.params._id);
@@ -99,6 +105,9 @@ Router.map(function() {
       Session.set('active_project',this.params._id);
       Session.set('in_project',Session.get('active_project'));
       return Projects.findOne({_id:this.params._id});
+    },
+    unload:function(){
+      Session.set('in_project',null);
     },
     onAfterAction: function() {
       SEO.set({
@@ -142,6 +151,10 @@ Router.map(function() {
   this.route('profile', {
     path: '/profile',
     layoutTemplate:'mainLayout',
+    waitOn: function() {
+      Session.set('in_project',null);
+      return Meteor.subscribe('profilePictures');
+    },
     data: function() {
       return Meteor.user();
     }
