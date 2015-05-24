@@ -7,7 +7,7 @@ Template.members.helpers({
     return Meteor.users.find({_id:{$in:project.members}});
   },
   'isowner':function(parent){
-    return parent.userId === Meteor.userId();
+    return (parent.userId === Meteor.userId() && this._id != parent.userId); 
   }
 });
 Template.members.events({
