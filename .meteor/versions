@@ -42,6 +42,8 @@ check@1.0.5
 chuangbo:cookie@1.1.0
 cmather:handlebars-server@0.2.0
 coffeescript@1.0.6
+ctjp:meteor-bootstrap-switch@3.3.1_3
+ctjp:meteor-bootstrap-switch-assets@3.3.1_1
 dbarrett:dropzonejs@4.0.1
 dburles:google-maps@1.0.9
 ddp@1.1.0
@@ -103,6 +105,7 @@ mrt:footable@2.0.1-4.4
 mrt:moment@2.8.1
 mrt:underscore-string-latest@2.3.3
 multiply:iron-router-progress@1.0.1
+nathanlippi:bootstrap-3-switch@1.0.0
 npm-bcrypt@0.7.8_2
 oauth@1.1.4
 oauth1@1.1.4

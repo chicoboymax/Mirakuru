@@ -87,8 +87,14 @@ Schemas.Prospects = new SimpleSchema({
         return options;
       }
     }
-
-
+  },
+  contacted: {
+    type: Boolean,
+    optional: true,
+    autoform: {
+      omit: true
+    },
+    defaultValue:false
   },
   createdAt: {
     autoform: {
