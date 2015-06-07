@@ -20,6 +20,14 @@ Schemas.Lists = new SimpleSchema({
     optional: true,
     type: String
   },
+  completion: {
+    autoform: {
+      omit: true
+    },
+    optional: true,
+    type: Number,
+    defaultValue:0
+  },
   createdAt: {
     autoform: {
       omit: true

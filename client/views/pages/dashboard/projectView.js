@@ -11,15 +11,22 @@ Template.projectView.helpers({
     return Meteor.userId() === project.userId;
   },
   completion: function() {
-    var list = Lists.findOne({_id:this._id});
+    var list = Lists.findOne({_id:this.listId});
     var prospectsTotal = Prospects.find({listId:this._id}).count();
     var contacted = Prospects.find({$and:[{contacted:true},{listId:this._id}]}).count();
-    var completion = Math.round((contacted / prospectsTotal) * 100);
-    if (isNaN(completion)) {
+    var completionPer = Math.round((contacted / prospectsTotal) * 100);
+    if (isNaN(completionPer)) {
       return 0;
     } else {
-      return completion;
+      return completionPer;
     }
+  }
+});
+
+Template.projectView.events = ({
+  'change .contacted':function(){
+    console.log(this);
+    Lists.update({_id:this._id},{$set: {completion:completionPer}});
   }
 });
 
